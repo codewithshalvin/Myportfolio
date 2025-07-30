@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio - Shalvin Felcia A</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f0f90;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .hero {
+      background: url('BACK.jpg') center center/cover no-repeat;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 0;
+    }
+
+    .navbar, .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 60px 20px;
+    }
+
+    /* Mobile menu button */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #f25454;
+      animation: pulse 2s infinite;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links li a {
+      font-weight: 500;
+      position: relative;
+      padding: 4px 0;
+    }
+
+    .nav-links li a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background-color: #f25454;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links li a:hover::after {
+      width: 100%;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-grow: 1;
+      padding: 40px 60px;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .text-box {
+      max-width: 50%;
+      animation: fadeInLeft 1.2s ease-out;
+    }
+
+    .text-box .intro {
+      color: #f25454;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .text-box h1 {
+      font-size: 48px;
+      margin: 10px 0;
+    }
+
+    .text-box .subtitle {
+      font-size: 18px;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .buttons .btn {
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-right: 15px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background-color: #f25454;
+      color: white;
+      animation: pulse 2s infinite;
+    }
+
+    .btn.primary:hover {
+      background-color: #ff6c6c;
+      animation: none;
+    }
+
+    .btn.secondary {
+      border: 2px solid #f25454;
+      color: #f25454;
+    }
+
+    .btn.secondary:hover {
+      background-color: #f25454;
+      color: white;
+    }
+
+    .image-box {
+      max-width: 400px;
+      width: 100%;
+      animation: zoomIn 1.4s ease-out;
+    }
+
+    .image-box img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(27, 3, 40, 0.1);
+      animation: glow 2s infinite alternate;
+      transition: transform 0.3s ease;
+    }
+
+    .image-box img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Blog Section */
+    #blog {
+      padding: 80px 60px;
+      background-color: #1f0a32;
+      text-align: center;
+    }
+
+    #blog h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #f25454;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .blog-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #2a1a30;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(242, 84, 84, 0.2);
+      animation: fadeIn 1.5s;
+    }
+
+    .blog-content {
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    .blog-content h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #f25454;
+    }
+
+    .blog-content h3 {
+      font-size: 22px;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      color: #f25454;
+    }
+
+    .blog-content p {
+      margin-bottom: 15px;
+      color: #e0e0e0;
+    }
+
+    .blog-content hr {
+      border: none;
+      border-top: 1px solid #4a2c51;
+      margin: 25px 0;
+    }
+
+    .blog-content .text-center {
+      text-align: center;
+    }
+
+    /* Portfolio Section */
+    #portfolio {
+      padding: 80px 60px;
+      background-color: #150523;
+      text-align: center;
+    }
+
+    #portfolio h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #f25454;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .portfolio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .portfolio-card {
+      background: #4a2c51;
+      border-radius: 16px;
+      width: 300px;
+      overflow: hidden;
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      animation: fadeIn 1.5s;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(242, 84, 84, 0.3);
+    }
+
+    .portfolio-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      transition: all 0.5s ease;
+    }
+
+    .portfolio-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .portfolio-card h3 {
+      margin-bottom: 10px;
+      color: #f25454;
+    }
+
+    .portfolio-card p {
+      font-size: 14px;
+      color: #ccc;
+    }
+    
+    .portfolio-btn {
+      background-color: #f25454;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .portfolio-btn:hover {
+      background-color: #ff6c6c;
+      transform: scale(1.05);
+    }
+
+    /* Resume Section */
+    #resume {
+      padding: 80px 60px;
+      background-color: #1a0b29;
+      text-align: center;
+    }
+
+    #resume h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #f25454;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .resume-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #2a1a30;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(242, 84, 84, 0.2);
+      animation: fadeIn 1.5s;
+    }
+
+    .resume-img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .resume-img:hover {
+      transform: scale(1.03);
+    }
+
+    .download-btn {
+      background-color: #f25454;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: 600;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+
+    .download-btn:hover {
+      background-color: #ff6c6c;
+      transform: scale(1.05);
+      animation: none;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #0c0517;
+      padding: 60px 30px 30px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-col {
+      flex: 1;
+      min-width: 250px;
+      animation: fadeInUp 1s;
+    }
+
+    .footer-col h3 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #f25454;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: #f25454;
+    }
+
+    .footer-contact li {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-contact i {
+      color: #f25454;
+      font-size: 18px;
+      width: 25px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #2a1a30;
+      color: #f25454;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background-color: #f25454;
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #2a1a30;
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .footer-bottom p {
+      animation: fadeIn 2s;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background-color: #2a1a30;
+      margin: 10% auto;
+      padding: 30px;
+      border-radius: 16px;
+      width: 80%;
+      max-width: 800px;
+      box-shadow: 0 0 20px rgba(242, 84, 84, 0.3);
+      animation: fadeIn 0.5s;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #f25454;
+      padding-bottom: 10px;
+    }
+
+    .modal-title {
+      font-size: 24px;
+      color: #f25454;
+    }
+
+    .close {
+      color: #f25454;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #ff6c6c;
+    }
+
+    .item-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .item-list li {
+      padding: 15px;
+      margin-bottom: 10px;
+      background-color: #3a1e40;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .item-list li:hover {
+      background-color: #4a2c51;
+      transform: translateX(5px);
+    }
+
+    .item-list a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #fff;
+    }
+
+    .item-list .item-title {
+      font-weight: 600;
+    }
+
+    .item-list .item-date {
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    /* Animations */
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInLeft {
+      from { transform: translateX(-30px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #f25454; }
+      to { box-shadow: 0 0 25px #f25454; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Enhanced animation classes */
+    .animate__animated {
+      animation-duration: 1s;
+      animation-fill-mode: both;
+    }
+
+    .animate__delay-1 {
+      animation-delay: 0.2s;
+    }
+
+    .animate__delay-2 {
+      animation-delay: 0.4s;
+    }
+
+    .animate__delay-3 {
+      animation-delay: 0.6s;
+    }
+
+    .animate__delay-4 {
+      animation-delay: 0.8s;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 900px) {
+      .navbar {
+        padding: 20px 30px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: #1a0b29;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px; 
+        transition: right 0.5s ease;
+        z-index: 1;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 30px;
+      }
+
+      .text-box, .image-box {
+        max-width: 100%;
+      }
+
+      .text-box h1 {
+        font-size: 36px;
+      }
+
+      .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .buttons .btn {
+        margin: 5px;
+      }
+
+      #portfolio, #resume, #blog {
+        padding: 60px 30px;
+      }
+
+      .portfolio-card {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .modal-content {
+        width: 90%;
+        margin: 20% auto;
+        padding: 20px;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .footer-contact li {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="navbar">
+      <div class="logo">Shalvin</div>
+      <div class="menu-toggle">☰</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#practice">About</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero-content">
+      <div class="text-box">
+        <p class="intro animate__animated animate__fadeIn">HELLO!</p>
+        <h1 class="animate__animated animate__fadeIn animate__delay-1">I Am Shalvin Felcia A</h1>
+        <p class="subtitle animate__animated animate__fadeIn animate__delay-2">I'm a Web Developer with a passion for creating clean and modern web experiences.</p>
+        <div class="buttons animate__animated animate__fadeIn animate__delay-3">
+          <a href="#portfolio" class="btn primary">View Work</a>
+          <a href="#contact" class="btn secondary">Hire Me</a>
+        </div>
+      </div>
+      <div class="image-box animate-float">
+        <img src="SH.jpg" alt="Shalvin Felcia A">
+      </div>
+    </div>
+  </header>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio">
+    <h2 class="animate__animated animate__fadeInDown">My Work</h2>
+    <div class="portfolio-grid">
+
+      <!-- Projects Card -->
+      <div class="portfolio-card animate__animated animate__fadeIn animate__delay-1">
+        <img src="p.jpg" alt="Project">
+        <h3>Projects</h3>
+        <button class="portfolio-btn" onclick="openModal('projectsModal')">View Projects</button>
+      </div>
+
+      <!-- Certificate Card -->
+      <div class="portfolio-card animate__animated animate__fadeIn animate__delay-2">
+        <img src="cert.jpg" alt="Certificate">
+        <h3>Certificates</h3>
+        <button class="portfolio-btn" onclick="openModal('certificatesModal')">View Certificates</button>
+      </div>
+
+      <!-- Achievements Card -->
+      <div class="portfolio-card animate__animated animate__fadeIn animate__delay-3">
+        <img src="trop.jpg" alt="Winning Moment">
+        <h3>Achievements</h3>
+        <button class="portfolio-btn" onclick="openModal('achievementsModal')">View Achievements</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Resume Section -->
+  <section id="resume">
+    <h2 class="animate__animated animate__fadeInDown">My Resume</h2>
+    <div class="resume-container animate__animated animate__fadeIn">
+      <img class="resume-img" src="resume.png" alt="Shalvin's Resume">
+      <a href="#" class="download-btn">Download Resume</a>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <h2 class="animate__animated animate__fadeInDown">My Blog</h2>
+    <div class="blog-container animate__animated animate__fadeIn">
+      <div class="blog-content">
+        <h2 class="animate__animated animate__fadeIn animate__delay-1">🌟 About Me – Shalvin Felcia</h2>
+        <p class="animate__animated animate__fadeIn animate__delay-1">Hey there! I'm <strong>Shalvin Felcia</strong> — a passionate creator, a computer science student, and a proud small business owner who loves bringing imagination to life through both code and craft.</p>
+        
+        <p class="animate__animated animate__fadeIn animate__delay-2">I've always been drawn to the magic of making — whether it's designing a beautiful illusion painting, pouring resin into stunning forms, or writing lines of code that turn ideas into working apps. My journey blends the worlds of <strong>technology</strong> and <strong>art</strong>, where I get to experiment, build, and constantly learn.</p>
+        
+        <h3 class="animate__animated animate__fadeIn animate__delay-2">🎨 The Creative Hustle</h3>
+        <p class="animate__animated animate__fadeIn animate__delay-3">What started as a hobby turned into a full-blown small business — from resin art and illusion paintings to hoop embroidery and handcrafted shadow boxes. Each piece is crafted with passion, patience, and purpose.</p>
+        <p class="animate__animated animate__fadeIn animate__delay-3">I recently stepped into the world of <strong>YouTube</strong> to share my creations, tutorials, and behind-the-scenes processes with the world. It's been an exciting way to connect with fellow creatives and inspire others to try something new.</p>
+        
+        <h3 class="animate__animated animate__fadeIn animate__delay-3">💻 The Tech Explorer</h3>
+        <p class="animate__animated animate__fadeIn animate__delay-4">As a <strong>computer science student</strong>, I love solving problems, building projects, and diving into tech trends. Whether it's a class project or a side hustle idea, I enjoy experimenting with code the same way I do with colors and textures.</p>
+        
+        <h3 class="animate__animated animate__fadeIn animate__delay-4">💫 Beyond the Work</h3>
+        <p class="animate__animated animate__fadeIn animate__delay-4">I'm also a proud daughter, a dreamer, and a doer who believes in growing, learning, and giving back. From college events to time with family — I stay grounded and grateful.</p>
+        <hr class="my-6" />
+        <p class="text-center text-lg animate__animated animate__pulse">✨ Got a cool collab idea? Let's connect over art, tech, or coffee!</p>
+      </div>
+    
+<!-- Add this table below -->
+<div id="practice">
+<h3 class="animate__animated animate__fadeIn animate__delay-4">📊 Programming Practice Summary</h3>
+<table style="width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #3a1e40; color: #fff;">
+  <thead>
+    <tr style="background-color: #f25454; color: white;">
+      <th style="padding: 12px; border: 1px solid #4a2c51;">Platform</th>
+      <th style="padding: 12px; border: 1px solid #4a2c51;">Program Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding: 12px; border: 1px solid #4a2c51;">Skillrack</td>
+      <td style="padding: 12px; border: 1px solid #4a2c51;">1136</td>
+    </tr>
+    <tr>
+      <td style="padding: 12px; border: 1px solid #4a2c51;">LeetCode</td>
+      <td style="padding: 12px; border: 1px solid #4a2c51;">45</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<!-- End of table -->
+
+
+</section>
+
+  <!-- Footer with Contact Section -->
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h3>Get In Touch</h3>
+        <ul class="footer-contact" style="list-style: none; padding: 0;">
+          <li><i class="fas fa-phone"></i> 6382221045</li>
+          <li><i class="fas fa-envelope"></i> shalvinfelcia@gmail.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Tamil Nadu, India</li>
+        </ul>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Social Connect</h3>
+        <p>Follow me on social media for updates on my latest projects and creative work.</p>
+        <div class="social-links">
+          <a href="https://github.com/codewithshalvin" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/shalvin-felcia-792916320/recent-activity/all/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.youtube.com/@ShalvinFelcia" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/__design_palette__?igsh=MWFkY2o1YmhzdDh2bQ==" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      
+      <div class="footer-col">
+        <h3>Quick Links</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin-bottom: 10px;"><a href="#hero-content">Home</a></li>
+          <li style="margin-bottom: 10px;"><a href="#portfolio">Portfolio</a></li>
+          <li style="margin-bottom: 10px;"><a href="#resume">Resume</a></li>
+          <li style="margin-bottom: 10px;"><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Shalvin Felcia. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Projects Modal -->
+  <div id="projectsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">My Projects</h2>
+        <span class="close" onclick="closeModal('projectsModal')">&times;</span>
+      </div>
+      <ul class="item-list">
+        <li>
+          <a href="https://www.linkedin.com/posts/shalvin-felcia-792916320_webdesign-frontendshowcase-activity-7315415739522260993-4Tn7?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFFLKd4BW668wF2M5Qv9ASm6dFkBYM4RcEw" target="_blank">
+            <span class="item-title">Frontend design for Table Reservation</span>
+            <span class="item-date">2024</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://example.com/project2" target="_blank">
+            <span class="item-title">Portfolio Template</span>
+            <span class="item-date">2023</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/posts/shalvin-felcia-792916320_webdevelopment-html-css-activity-7315690173785165824-icED?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFFLKd4BW668wF2M5Qv9ASm6dFkBYM4RcEw" target="_blank">
+            <span class="item-title">Frontend design for a Boutique</span>
+            <span class="item-date">2023</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  <!-- Certificates Modal -->
+  <div id="certificatesModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">My Certificates</h2>
+        <span class="close" onclick="closeModal('certificatesModal')">&times;</span>
+      </div>
+      <ul class="item-list">
+        <li>
+          <a href="https://www.linkedin.com/posts/shalvin-felcia-792916320_networking-troubleshooting-itskills-activity-7315658354075357184-cLZV?utm_source=social_share_send&utm_medium=android_app&rcm=ACoAAFFLKd4BW668wF2M5Qv9ASm6dFkBYM4RcEw&utm_campaign=copy_link" target="_blank">
+            <span class="item-title">Network Addressing and Troubleshooting</span>
+            <span class="item-date">2024</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/posts/shalvin-felcia-792916320_nptel-industry4abr0-iiot-activity-7331904652919160832-CeL9?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFFLKd4BW668wF2M5Qv9ASm6dFkBYM4RcEw" target="_blank">
+            <span class="item-title">Introduction to Industry 4.0</span> 
+            <span class="item-date">2025</span>
+          </a>
+        </li>
+        <li>
+            <span class="item-title">Joy of Computing Python</span>
+            <span class="item-date">2024</span>
+        </li>
+        <li>
+            <span class="item-title">Cloud computing</span>
+            <span class="item-date">2025</span>
+        </li>
+        <li>
+            <span class="item-title">DataBase Management system</span>
+            <span class="item-date">2025</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Achievements Modal -->
+  <div id="achievementsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">My Achievements</h2>
+        <span class="close" onclick="closeModal('achievementsModal')">&times;</span>
+      </div>
+      <ul class="item-list">
+        <li>
+          <a href="https://www.linkedin.com/posts/shalvin-felcia-792916320_entrepreneurship-businessplan-yukti25-activity-7304378195175215105-Fyvn?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFFLKd4BW668wF2M5Qv9ASm6dFkBYM4RcEw">
+            <span class="item-title">Business Plan</span>
+            <span class="item-date">2025</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/posts/shalvin-felcia-792916320_productlaunch-winner-throwback-activity-7317975873419100161-mxFJ?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAFFLKd4BW668wF2M5Qv9ASm6dFkBYM4RcEw" target="_blank">
+            <span class="item-title">Product Launch</span>
+            <span class="item-date">2024</span>
+          </a>
+        </li>
+       
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Modal functions
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>
