@@ -112,12 +112,18 @@
       color: var(--navy);
     }
 
+    /* ── TICKER ── */
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      padding: 100px 60px 60px;
+      padding: 140px 60px 60px;
       position: relative;
       overflow: hidden;
       background: linear-gradient(135deg, #FFF8CC 0%, #F0EEFF 60%, #E8F4FF 100%);
@@ -498,9 +504,7 @@
 
     .card-btn:hover { background: var(--blue-accent); transform: scale(1.05); }
 
-    /* ══════════════════════════════════════════
-       ── WORK SLIDESHOW SECTION ──
-    ══════════════════════════════════════════ */
+    /* ── WORK GALLERY ── */
     #work-gallery {
       background: var(--navy);
       padding: 80px 60px;
@@ -553,7 +557,6 @@
       margin-top: 10px;
     }
 
-    /* Slideshow track */
     .slideshow-outer {
       position: relative;
       max-width: 1100px;
@@ -561,7 +564,6 @@
       z-index: 1;
     }
 
-    /* Fade edges */
     .slideshow-outer::before,
     .slideshow-outer::after {
       content: '';
@@ -656,7 +658,6 @@
       font-family: 'Nunito', sans-serif;
     }
 
-    /* Controls */
     .slideshow-controls {
       display: flex;
       align-items: center;
@@ -709,7 +710,6 @@
       border-radius: 4px;
     }
 
-    /* Autoplay toggle */
     .autoplay-btn {
       background: rgba(255,255,255,0.08);
       border: 2px solid rgba(255,255,255,0.12);
@@ -733,7 +733,7 @@
       color: var(--navy);
     }
 
-    /* Lightbox */
+    /* ── LIGHTBOX ── */
     .lightbox {
       display: none;
       position: fixed;
@@ -1197,6 +1197,11 @@
       to { transform: scale(1) translateY(0); opacity: 1; }
     }
 
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
     .reveal { opacity: 0; transform: translateY(28px); transition: all 0.7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
@@ -1209,13 +1214,13 @@
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 70px; left: 0; right: 0;
+        top: 108px; left: 0; right: 0;
         background: white;
         padding: 24px;
         gap: 8px;
         box-shadow: 0 8px 32px rgba(0,0,0,0.1);
       }
-      .hero { padding: 100px 24px 60px; }
+      .hero { padding: 150px 24px 60px; }
       .hero-inner { flex-direction: column; text-align: center; }
       .hero-text h1 { font-size: 38px; }
       .hero-btns { justify-content: center; }
@@ -1249,6 +1254,31 @@
       <li><a href="#contact" class="nav-hire">Hire Me</a></li>
     </ul>
   </nav>
+
+  <!-- ACHIEVEMENT TICKER -->
+  <div style="width:100%;background:#1A1A2E;overflow:hidden;display:flex;align-items:center;height:38px;border-bottom:2px solid #FFD600;position:fixed;top:70px;left:0;right:0;z-index:998;">
+    <div style="background:#FFD600;color:#1A1A2E;font-family:'Poppins',sans-serif;font-weight:800;font-size:12px;padding:0 18px;height:100%;display:flex;align-items:center;white-space:nowrap;letter-spacing:1px;text-transform:uppercase;flex-shrink:0;">&#9733; Achievements</div>
+    <div style="flex:1;overflow:hidden;">
+      <div id="tickerTrack" style="display:flex;animation:tickerScroll 28s linear infinite;width:max-content;">
+        <div style="display:flex;align-items:center;gap:10px;padding:0 36px;white-space:nowrap;font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,0.9);font-weight:500;">&#128187; TCS CodeVita 2025 &mdash; Global Rank 5055 <span style="background:#FFD600;color:#1A1A2E;font-size:10px;font-weight:800;padding:2px 8px;border-radius:50px;margin-left:6px;">Coding</span></div>
+        <span style="color:#FFD600;font-size:18px;opacity:0.5;padding:0 4px;display:flex;align-items:center;">&#9670;</span>
+        <div style="display:flex;align-items:center;gap:10px;padding:0 36px;white-space:nowrap;font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,0.9);font-weight:500;">&#127942; HP Dreams Unlocked 2025 &mdash; Top 25 Nationwide <span style="background:#FFD600;color:#1A1A2E;font-size:10px;font-weight:800;padding:2px 8px;border-radius:50px;margin-left:6px;">HP</span></div>
+        <span style="color:#FFD600;font-size:18px;opacity:0.5;padding:0 4px;display:flex;align-items:center;">&#9670;</span>
+        <div style="display:flex;align-items:center;gap:10px;padding:0 36px;white-space:nowrap;font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,0.9);font-weight:500;">&#129352; Business Plan Competition &mdash; 2nd Prize &bull; Won &#8377;7,000 <span style="background:#FFD600;color:#1A1A2E;font-size:10px;font-weight:800;padding:2px 8px;border-radius:50px;margin-left:6px;">Entrepreneurship</span></div>
+        <span style="color:#FFD600;font-size:18px;opacity:0.5;padding:0 4px;display:flex;align-items:center;">&#9670;</span>
+        <div style="display:flex;align-items:center;gap:10px;padding:0 36px;white-space:nowrap;font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,0.9);font-weight:500;">&#127881; Product Launch Competition &mdash; 1st Prize Winner <span style="background:#FFD600;color:#1A1A2E;font-size:10px;font-weight:800;padding:2px 8px;border-radius:50px;margin-left:6px;">Winner</span></div>
+        <span style="color:#FFD600;font-size:18px;opacity:0.5;padding:0 4px;display:flex;align-items:center;">&#9670;</span>
+        <!-- duplicate for seamless loop -->
+        <div style="display:flex;align-items:center;gap:10px;padding:0 36px;white-space:nowrap;font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,0.9);font-weight:500;">&#128187; TCS CodeVita 2025 &mdash; Global Rank 5055 <span style="background:#FFD600;color:#1A1A2E;font-size:10px;font-weight:800;padding:2px 8px;border-radius:50px;margin-left:6px;">Coding</span></div>
+        <span style="color:#FFD600;font-size:18px;opacity:0.5;padding:0 4px;display:flex;align-items:center;">&#9670;</span>
+        <div style="display:flex;align-items:center;gap:10px;padding:0 36px;white-space:nowrap;font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,0.9);font-weight:500;">&#127942; HP Dreams Unlocked 2025 &mdash; Top 25 Nationwide <span style="background:#FFD600;color:#1A1A2E;font-size:10px;font-weight:800;padding:2px 8px;border-radius:50px;margin-left:6px;">HP</span></div>
+        <span style="color:#FFD600;font-size:18px;opacity:0.5;padding:0 4px;display:flex;align-items:center;">&#9670;</span>
+        <div style="display:flex;align-items:center;gap:10px;padding:0 36px;white-space:nowrap;font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,0.9);font-weight:500;">&#129352; Business Plan Competition &mdash; 2nd Prize &bull; Won &#8377;7,000 <span style="background:#FFD600;color:#1A1A2E;font-size:10px;font-weight:800;padding:2px 8px;border-radius:50px;margin-left:6px;">Entrepreneurship</span></div>
+        <span style="color:#FFD600;font-size:18px;opacity:0.5;padding:0 4px;display:flex;align-items:center;">&#9670;</span>
+        <div style="display:flex;align-items:center;gap:10px;padding:0 36px;white-space:nowrap;font-family:'Poppins',sans-serif;font-size:13px;color:rgba(255,255,255,0.9);font-weight:500;">&#127881; Product Launch Competition &mdash; 1st Prize Winner <span style="background:#FFD600;color:#1A1A2E;font-size:10px;font-weight:800;padding:2px 8px;border-radius:50px;margin-left:6px;">Winner</span></div>
+      </div>
+    </div>
+  </div>
 
   <!-- HERO -->
   <header class="hero">
@@ -1343,7 +1373,7 @@
     </div>
   </section>
 
-  <!-- ══ WORK GALLERY SLIDESHOW ══ -->
+  <!-- WORK GALLERY SLIDESHOW -->
   <section id="work-gallery">
     <div class="gallery-header reveal">
       <div class="section-tag">Visual Work</div>
@@ -1353,9 +1383,7 @@
 
     <div class="slideshow-outer reveal">
       <div class="slideshow-viewport">
-        <div class="slideshow-track" id="slideshowTrack">
-          <!-- Slides injected by JS -->
-        </div>
+        <div class="slideshow-track" id="slideshowTrack"></div>
       </div>
     </div>
 
@@ -1504,18 +1532,6 @@
             <span class="item-date">2025</span>
           </a>
         </li>
-        <li class="modal-item">
-          <a href="https://learning-gallery-1.onrender.com/" target="_blank">
-            <div class="item-left"><div class="item-dot"></div><div class="item-title">Smart Learning Gallery</div></div>
-            <span class="item-date">2026</span>
-          </a>
-        </li>
-        <li class="modal-item">
-          <a href="https://luxora-client.onrender.com/" target="_blank">
-            <div class="item-left"><div class="item-dot"></div><div class="item-title">Eccomerce website with collabrative wishlist and ar viewer</div></div>
-            <span class="item-date">2026</span>
-          </a>
-        </li>
       </ul>
     </div>
   </div>
@@ -1591,34 +1607,32 @@
   </div>
 
   <script>
-    // ─── Mobile nav ───
+    // Mobile nav
     document.getElementById('menuToggle').addEventListener('click', () => {
       document.getElementById('navLinks').classList.toggle('open');
     });
 
-    // ─── Modals ───
+    // Modals
     function openModal(id) { document.getElementById(id).classList.add('open'); }
     function closeModal(id) { document.getElementById(id).classList.remove('open'); }
     function handleModalClick(e, id) {
       if (e.target === document.getElementById(id)) closeModal(id);
     }
 
-    // ─── Scroll reveal ───
+    // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.12 });
     revealEls.forEach(el => observer.observe(el));
 
-    // ─── Navbar shadow ───
+    // Navbar shadow
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').style.boxShadow =
         window.scrollY > 10 ? '0 4px 30px rgba(26,26,46,0.13)' : '0 2px 20px rgba(26,26,46,0.08)';
     });
 
-    // ════════════════════════════════
-    // ─── SLIDESHOW ───
-    // ════════════════════════════════
+    // SLIDESHOW
     const images = [
       { src: '1.jpeg', label: 'Work Snapshot 01' },
       { src: '8.jpeg', label: 'Work Snapshot 08' },
@@ -1638,7 +1652,6 @@
     const autoplayIcon = document.getElementById('autoplayIcon');
     const autoplayLabel = document.getElementById('autoplayLabel');
 
-    const VISIBLE   = getVisibleCount();
     let currentIdx  = 0;
     let autoInterval = null;
     let isPlaying   = true;
@@ -1647,7 +1660,6 @@
       return window.innerWidth <= 960 ? 1 : window.innerWidth <= 1100 ? 2 : 3;
     }
 
-    // Build slides
     images.forEach((img, i) => {
       const slide = document.createElement('div');
       slide.className = 'slide';
@@ -1660,7 +1672,6 @@
       track.appendChild(slide);
     });
 
-    // Build dots
     const totalDots = images.length;
     for (let i = 0; i < totalDots; i++) {
       const dot = document.createElement('button');
@@ -1673,7 +1684,7 @@
     function getSlideWidth() {
       const slide = track.querySelector('.slide');
       if (!slide) return 320;
-      return slide.offsetWidth + 20; // width + gap
+      return slide.offsetWidth + 20;
     }
 
     function goTo(idx) {
@@ -1715,11 +1726,9 @@
       isPlaying ? stopAutoplay() : startAutoplay();
     });
 
-    // Pause on hover
     track.addEventListener('mouseenter', () => { if (isPlaying) clearInterval(autoInterval); });
     track.addEventListener('mouseleave', () => { if (isPlaying) autoInterval = setInterval(next, 3000); });
 
-    // Touch / swipe
     let touchStartX = 0;
     track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
     track.addEventListener('touchend', e => {
@@ -1727,21 +1736,16 @@
       if (Math.abs(diff) > 40) { diff > 0 ? next() : prev(); resetAutoplay(); }
     });
 
-    // Keyboard
     document.addEventListener('keydown', e => {
       if (e.key === 'ArrowLeft') { prev(); resetAutoplay(); }
       if (e.key === 'ArrowRight') { next(); resetAutoplay(); }
     });
 
-    // Resize recalculate
     window.addEventListener('resize', () => { goTo(currentIdx); });
 
-    // Start
     startAutoplay();
 
-    // ════════════════════════════════
-    // ─── LIGHTBOX ───
-    // ════════════════════════════════
+    // LIGHTBOX
     let lbIndex = 0;
 
     function openLightbox(idx) {
